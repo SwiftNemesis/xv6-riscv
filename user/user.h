@@ -22,7 +22,10 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
-
+int getmem();
+int getstate();
+int getparentpid();
+int getkstack();
 // ulib.c
 int stat(const char*, struct stat*);
 char* strcpy(char*, const char*);

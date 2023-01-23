@@ -89,3 +89,27 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+uint64
+sys_getmem(void)
+{
+
+}
+
+uint64 
+sys_getstate(void)
+{
+
+}
+
+uint64 
+sys_getparentpid(void)
+{
+
+}
+
+uint64 
+sys_getkstack(void)
+{
+
+}
