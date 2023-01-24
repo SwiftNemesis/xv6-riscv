@@ -93,23 +93,22 @@ sys_uptime(void)
 uint64
 sys_getmem(void)
 {
-
 }
 
 uint64 
 sys_getstate(void)
 {
-
+  return(procstate());
 }
 
 uint64 
 sys_getparentpid(void)
 {
-
+  return myproc()->parent;
 }
 
 uint64 
 sys_getkstack(void)
 {
-
+  return myproc()->kstack;
 }
