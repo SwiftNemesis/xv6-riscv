@@ -93,18 +93,21 @@ sys_uptime(void)
 uint64
 sys_getmem(void)
 {
+  return myproc()->sz; // Memory size of process
 }
 
 uint64 
 sys_getstate(void)
 {
-  return(procstate());
+  return myproc()->state;
+  //return(procstate());
 }
 
 uint64 
 sys_getparentpid(void)
 {
-  return myproc()->parent;
+  return myproc()->parent->pid;
+  //return myproc()->parent;
 }
 
 uint64 
