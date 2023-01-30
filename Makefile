@@ -134,6 +134,7 @@ UPROGS=\
 	$U/_zombie\
 	$U/_hello\
 	$U/_stat\
+	$U/_time\
 
 # Updated to have stat as a user program.
 
