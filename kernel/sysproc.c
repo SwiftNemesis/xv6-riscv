@@ -115,9 +115,3 @@ sys_getkstack(void)
 {
   return myproc()->kstack;
 }
-
-uint64
-sys_time(void)
-{
-  return 0;
-}

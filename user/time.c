@@ -5,14 +5,10 @@
 
 int main(int argc, char *argv[])
 {
-    if(argc > 2)
+    if(argc < 2)
     {
-        printf("Too many arguments, example format: time ARGUMENT.");
+        printf("Time completed in 0 ticks\n");
         return 1;
-    }
-    else if(argc < 2)
-    {
-        printf("Not enough arguments, example format: time ARGUMENT.");
     }
 
     int pid = fork();
@@ -20,20 +16,21 @@ int main(int argc, char *argv[])
 
     if(pid < 0)
     {
-        printf("Fork Failed");
+        printf("Fork Failed\n");
         return 1;
     }
-    if (pid == 0) 
+    else if (pid == 0) 
     {
         exec(argv[1], argv+1);
-        return 0;
+        printf("Execution error, %s is not a program.\n", argv[1]);
+        return 1;
     }
-    if (pid > 0)
+    else
     {
         wait(0);
         int programTime = uptime();
-        programTime = programTime - currentTime;
-        printf("%s completed in %d ticks\n", argv[1], programTime);
+        programTime -= currentTime;
+        printf("Real-time in ticks: %d\n", programTime);
         return 0;
     }
 

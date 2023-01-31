@@ -105,8 +105,6 @@ extern uint64 sys_getmem(void);
 extern uint64 sys_getstate(void);
 extern uint64 sys_getparentpid(void);
 extern uint64 sys_getkstack(void);
-extern uint64 sys_time(void);
-
 // An array mapping syscall numbers from syscall.h
 // to the function that handles the system call.
 static uint64 (*syscalls[])(void) = {
@@ -134,8 +132,7 @@ static uint64 (*syscalls[])(void) = {
 [SYS_getmem]  sys_getmem,
 [SYS_getstate]  sys_getstate,
 [SYS_getparentpid]  sys_getparentpid,
-[SYS_getkstack] sys_getkstack,
-[SYS_time] sys_time
+[SYS_getkstack] sys_getkstack
 };
 
 void
