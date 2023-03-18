@@ -40,4 +40,5 @@ entry("getmem");
 entry("getstate");
 entry("getparentpid");
 entry("getkstack");
-
+entry("getpri");
+entry("setpri");

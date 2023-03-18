@@ -115,3 +115,17 @@ sys_getkstack(void)
 {
   return myproc()->kstack;
 }
+
+uint64
+sys_getpri(void)
+{
+  return myproc()->priority;
+}
+
+uint64
+sys_setpri(int n)
+{
+  argint(0, &n);
+  myproc()->priority = n;
+  return 0;
+}

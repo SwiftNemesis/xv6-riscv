@@ -24,4 +24,5 @@
 #define SYS_getstate 23
 #define SYS_getparentpid 24
 #define SYS_getkstack 25
-
+#define SYS_getpri 26
+#define SYS_setpri 27
