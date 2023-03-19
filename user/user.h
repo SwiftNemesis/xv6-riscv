@@ -26,6 +26,8 @@ int getmem();
 int getstate();
 int getparentpid();
 int getkstack();
+int getpri();
+int setpri(int);
 // ulib.c
 int stat(const char*, struct stat*);
 char* strcpy(char*, const char*);

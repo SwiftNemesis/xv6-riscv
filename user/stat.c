@@ -8,6 +8,7 @@
 int main(int argc, char *argv[])
 {
     printf("Process PID:\t%d\n", getpid());
+    printf("Priority:\t0x0%x\n", getpri());
     printf("Memory Used:\t%d\n", getmem());
     int temp = getstate();
     switch(temp)
@@ -33,6 +34,21 @@ int main(int argc, char *argv[])
     }
     printf("Uptime (ticks):\t%d\n", uptime());
     printf("Parnet PID:\t%d\n", getparentpid());
-    printf("Page Tble Addr:\t%x\n", getkstack());
+    printf("Page Tble Addr:\t%x\n\n", getkstack());
+
+    printf("Testing setpri() and getpri()... for Project #5A\n\n");
+    // FOR TESTING PURPOSES OF PROJECT #5A OF SETPRI();
+    int test = 0x0A;
+    for (int i = 0; i < 6; i++)
+    {
+        printf("Changing priority to 0x0%x...\n", test);
+        setpri(test);
+        printf("Priority:\t0x0%x\n", getpri());
+        test++;
+    }
+    
+    printf("Change priority to invalid value... 0x12\n");
+    setpri(0x12);
+    printf("Priority:\t0x0%x\n", getpri());
     return 0;
 }
