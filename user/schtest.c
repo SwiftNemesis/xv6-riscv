@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     }
     int pid;
     int status;
-    int prio = 0x0A;
+    int prio = 0x0C;
     //Forks the number of processes specified by the user
     for (int i = 0; i < PROC_NUM; i++)
     {
