@@ -126,7 +126,7 @@ uint64
 sys_setpri(int n)
 {
   argint(0, &n);
-  if(n < 0x0A || n > 0x0F)
+  if(n < 0x0A || n > 0x0F || n == 0x0E)
   {
     printf("Invalid priority value. Please enter a value between 0x0A and 0x0F.\n");
     return -1;

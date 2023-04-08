@@ -49,9 +49,13 @@ int main(int argc, char *argv[])
         //Helps to sync text output since I can't use mutex/semaphores to lock it.
         sleep(2);
         prio++;
-        if(prio > 15)
+        if(prio > 0x0F)
         {
             prio = 0x0A;
+        }
+        else if (prio == 0x0E)
+        {
+            prio = 0x0F;
         }
     }
     //Wait for all children to finish
