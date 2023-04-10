@@ -46,8 +46,6 @@ int main(int argc, char *argv[])
             exec("schtestWork", newArgv);
             exit(1);
         }
-        //Helps to sync text output since I can't use mutex/semaphores to lock it.
-        sleep(2);
         prio++;
         if(prio > 0x0F)
         {
