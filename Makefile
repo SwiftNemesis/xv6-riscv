@@ -135,8 +135,7 @@ UPROGS=\
 	$U/_hello\
 	$U/_stat\
 	$U/_time\
-	$U/_schtest\
-	$U/_schtestWork
+	$U/_schtest
 
 # Updated to have stat as a user program.
 

@@ -2,18 +2,32 @@
 #include "kernel/stat.h"
 #include "user/user.h"
 
+#define ROWS 100000
+#define COLS 100000
+
+int math(int procnum)
+{
+    printf("Process %d started (priority 0x%x)\n", procnum, getpri());
+    for (int i = 0; i < ROWS; i++)
+    {
+        for (int j = 0; j < COLS; j++)
+        {}
+    }
+    printf("Process %d finished (priority 0x%x)\n", procnum, getpri());
+    return 0;
+}
+
 int main(int argc, char *argv[])
 {
     //Converts the command line argument to an integer
     int PROC_NUM = atoi(argv[1]);
     //Checks for valid input
-    if (argc < 2 || PROC_NUM < 1 || PROC_NUM > 64)
+    if (argc < 2 || PROC_NUM < 1 || PROC_NUM > 60)
     {
-        printf("Usage: schtest <number of processes> (1-64)\n");
+        printf("Usage: schtest <number of processes> (1-60)\n");
         exit(1);
     }
     int pid;
-    int status;
     int prio = 0x0C;
     //Forks the number of processes specified by the user
     for (int i = 0; i < PROC_NUM; i++)
@@ -27,24 +41,8 @@ int main(int argc, char *argv[])
         else if (pid == 0)
         {
             setpri(prio);
-            if(i > 9)
-            {
-                //Converts i to a string for text output in the child process
-                char str[3];
-                str[0] = (i/10) + '0';
-                str[1] = (i%10) + '0';
-                str[2] = '\0';
-                char *newArgv[] = {argv[0], argv[1], str};
-                exec("schtestWork", newArgv);
-                exit(1);
-            }
-            char str[2];
-            str[0] = (i % 10) + '0';
-            str[1] = '\0';
-
-            char *newArgv[] = {argv[0], argv[1], str};
-            exec("schtestWork", newArgv);
-            exit(1);
+            math(i);
+            exit(0);
         }
         prio++;
         if(prio > 0x0F)
@@ -56,10 +54,9 @@ int main(int argc, char *argv[])
             prio = 0x0F;
         }
     }
-    //Wait for all children to finish
     for(int i = 0; i < PROC_NUM; i++)
     {
-        pid = wait(&status);
+        wait(&pid);
     }
-    exit(0);
+    return 0;
 }
