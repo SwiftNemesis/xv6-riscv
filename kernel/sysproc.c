@@ -128,7 +128,7 @@ sys_setpri(int n)
   argint(0, &n);
   if(n < 0x0A || n > 0x0F || n == 0x0E)
   {
-    printf("Invalid priority value. Please enter a value between 0x0A and 0x0F.\n");
+    printf("Invalid priority value. Please enter a value between 0x0A and 0x0F. (0x0E is an exception)\n");
     return -1;
   }
   myproc()->priority = n;

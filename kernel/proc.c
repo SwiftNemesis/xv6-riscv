@@ -485,7 +485,6 @@ void scheduler(void)
   for(;;)
   {
     intr_on();
-    //acquire(&p->lock);
     for (p = proc; p < &proc[NPROC]; p++)
     {
       acquire(&p->lock);
